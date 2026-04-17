@@ -4,347 +4,215 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agung Dwi F | Portofolio</title>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Alpine JS -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-  
+
   <style>
-    body { 
-      font-family: 'Segoe UI', system-ui, sans-serif; 
-    }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+
     .hero-bg {
       background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
+
     .leaf-bg {
       background-image: url("images/backgr.jpeg");
       background-size: cover;
       background-position: center;
     }
+
     .card-hover {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s ease;
     }
+
     .card-hover:hover {
-      transform: translateY(-20px);
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
+
     .nav-link {
       position: relative;
-      transition: color 0.3s ease;
     }
-    .nav-link:after {
+
+    .nav-link::after {
       content: '';
       position: absolute;
       width: 0;
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: rgb(16 185 129);
-      transition: width 0.3s ease;
+      background: #10b981;
+      transition: 0.3s;
     }
-    .nav-link:hover:after,
-    .nav-link.active:after {
+
+    .nav-link:hover::after {
       width: 100%;
     }
   </style>
 </head>
+
 <body class="bg-emerald-50 text-emerald-950">
 
-  <!-- Navbar Modern -->
-  <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-lg z-50 border-b border-emerald-100 transition-all duration-300" 
-       x-data="{ open: false, scrolled: false }"
-       @scroll.window="scrolled = window.scrollY > 50">
-    
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <!-- Logo -->
-      <div class="flex items-center gap-3">
-        <i class="fa-solid fa-leaf text-3xl text-emerald-600"></i>
-        <h1 class="text-2xl font-bold tracking-tight text-emerald-900">Agung Dwi F</h1>
-      </div>
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full bg-white/90 backdrop-blur z-50 border-b"
+<nav 
+  x-data="{ open: false }"
+  class="fixed top-0 w-full bg-white/90 backdrop-blur-lg z-50 border-b border-emerald-100">
 
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex gap-8 text-lg font-medium">
-        <a href="#home" class="nav-link text-emerald-800 hover:text-emerald-600">Beranda</a>
-        <a href="#tentang" class="nav-link text-emerald-800 hover:text-emerald-600">Tentang</a>
-        <a href="#proyek" class="nav-link text-emerald-800 hover:text-emerald-600">Eksplorasi</a>
-        <a href="#kontak" class="nav-link text-emerald-800 hover:text-emerald-600">Kontak</a>
-      </div>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
 
-      <!-- CTA Button -->
-      <div class="hidden md:block">
-        <a href="#kontak" 
-           class="bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg shadow-emerald-200 hover:shadow-xl">
-          Hubungi Saya
-        </a>
-      </div>
+    <!-- Logo -->
+    <h1 class="text-xl font-bold text-emerald-700 flex items-center gap-2">
+      <i class="fa-solid fa-leaf"></i> Agung Dwi F
+    </h1>
 
-      <!-- Mobile Hamburger -->
-      <button @click="open = !open" 
-              class="md:hidden text-3xl text-emerald-700 focus:outline-none">
-        <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
-      </button>
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-8 text-lg">
+      <a href="#home" class="nav-link">Beranda</a>
+      <a href="#tentang" class="nav-link">Tentang</a>
+      <a href="#proyek" class="nav-link">Eksplorasi</a>
+      <a href="#kontak" class="nav-link">Kontak</a>
     </div>
 
-    <!-- Mobile Menu -->
-    <div x-show="open" 
-         class="md:hidden bg-white border-t border-emerald-100 py-6">
-      <div class="flex flex-col gap-6 px-8 text-lg font-medium">
-        <a href="#home" @click="open = false" class="nav-link">Beranda</a>
-        <a href="#tentang" @click="open = false" class="nav-link">Tentang</a>
-        <a href="#proyek" @click="open = false" class="nav-link">Eksplorasi</a>
-        <a href="#kontak" @click="open = false" class="nav-link">Kontak</a>
-        
-        <a href="#kontak" @click="open = false"
-           class="bg-emerald-600 text-white text-center py-4 rounded-2xl font-semibold mt-4">
-          Hubungi Saya
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero-bg min-h-screen flex items-center text-white">
-    <div class="max-w-6xl mx-auto px-6 pt-20">
-      <div class="max-w-2xl">
-        <h2 class="text-6xl md:text-7xl font-bold leading-tight mb-6 tracking-tighter">
-          Selamat <span class="text-emerald-300">Datang</span><br>di Portofolio Saya
-        </h2>
-        <p class="text-xl md:text-2xl text-emerald-100 mb-12">
-          Halo, saya Agung Dwi Frasetyo.<br>
-          Siswa • Desainer • Pecinta Alam
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#proyek" 
-             class="bg-white text-emerald-950 px-10 py-4 rounded-2xl font-semibold hover:bg-emerald-100 transition-all duration-300 shadow-lg">
-            Lihat Eksplorasi Saya
-          </a>
-          <a href="#tentang" 
-             class="border-2 border-white hover:bg-white/10 px-10 py-4 rounded-2xl font-semibold transition-all duration-300">
-            Kenali Saya
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70">
-      <p class="text-sm tracking-widest">SCROLL</p>
-      <i class="fa-solid fa-chevron-down animate-bounce text-2xl"></i>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="tentang" class="py-28 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="relative">
-          <img src="images/profil.jpeg" 
-               alt="Foto Profil Agung Dwi F" 
-               class="rounded-3xl shadow-2xl w-full object-cover">
-          <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-xl">
-            <div class="flex items-center gap-4">
-              <i class="fa-solid fa-heart text-red-500 text-3xl"></i>
-              <div>
-                <p class="font-semibold">Hobby</p>
-                <p class="text-emerald-600">Musik • Alam • Tidur</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="space-y-8">
-          <div>
-            <span class="inline-block px-5 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-semibold">Tentang Saya</span>
-            <h2 class="text-5xl font-bold mt-6 leading-tight text-emerald-900">
-              Saya siswa dari <span class="text-emerald-600">SMKN 13 Bandung</span>
-            </h2>
-          </div>
-          
-          <p class="text-lg leading-relaxed text-emerald-700">
-            Halo! Nama lengkap saya <strong>Agung Dwi Frasetyo</strong>. 
-            Saya sangat menyukai musik, mengeksplorasi alam, dan tentunya tidur (istirahat itu penting!).
-            Saat ini saya sedang menempuh pendidikan di SMKN 13 Bandung dengan cita-cita menjadi seorang 
-            <span class="font-semibold text-emerald-600">Teknisi Jaringan</span>.
-          </p>
-
-          <div class="grid grid-cols-2 gap-6 pt-6">
-            <div>
-              <p class="text-emerald-500 text-sm font-medium">CITA-CITA</p>
-              <p class="font-semibold text-xl">Teknisi Jaringan</p>
-            </div>
-            <div>
-              <p class="text-emerald-500 text-sm font-medium">LOKASI</p>
-              <p class="font-semibold text-xl">Bandung, Jawa Barat</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Proyek / Eksplorasi Section -->
-  <section id="proyek" class="py-28 leaf-bg text-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-16">
-        <span class="inline-block px-5 py-2 bg-white/20 backdrop-blur-md text-emerald-100 rounded-full text-sm font-medium">Petualangan Alam</span>
-        <h2 class="text-5xl font-bold mt-4">Tempat yang Sudah Saya Kunjungi</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover">
-          <img src="images/proyek1.jpeg" alt="Gunung Manglayang" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Gunung Manglayang</h3>
-            <p class="text-emerald-100">Gunung indah di kawasan Bandung dengan pemandangan yang memukau.</p>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover">
-          <img src="images/proyek3.jpeg" alt="Pantai Karang Papak" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Pantai Karang Papak</h3>
-            <p class="text-emerald-100">Pantai eksotis di Garut Selatan dengan ombak yang tenang.</p>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover">
-          <img src="images/proyek2.jpeg" alt="Puncak Mega" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Puncak Mega</h3>
-            <p class="text-emerald-100">Destinasi gunung di Bandung Selatan yang cocok untuk hiking.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Kontak Section -->
-  <section id="kontak" class="py-28 bg-white">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-5xl font-bold mb-6">Mari Berhubungan</h2>
-      <p class="text-emerald-700 text-lg mb-12 max-w-md mx-auto">
-        Tertarik berkolaborasi, bertanya, atau sekadar ngobrol santai? Saya siap mendengar!
-      </p>
-
-      <div class="flex flex-col sm:flex-row justify-center gap-6">
-        <a href="mailto:agungdwifrasetyo@gmail.com" 
-           class="group flex items-center justify-center gap-4 bg-emerald-100 hover:bg-emerald-200 px-10 py-5 rounded-3xl transition-all duration-300">
-          <i class="fa-solid fa-envelope text-3xl text-emerald-600 group-hover:scale-110 transition"></i>
-          <div class="text-left">
-            <p class="font-semibold text-emerald-900">Email</p>
-            <p class="text-emerald-600 text-sm">agungdwifrasetyo@gmail.com</p>
-          </div>
-        </a>
-
-        <a href="https://wa.me/62882000079898" target="_blank"
-           class="group flex items-center justify-center gap-4 bg-emerald-100 hover:bg-emerald-200 px-10 py-5 rounded-3xl transition-all duration-300">
-          <i class="fa-brands fa-whatsapp text-3xl text-emerald-600 group-hover:scale-110 transition"></i>
-          <div class="text-left">
-            <p class="font-semibold text-emerald-900">WhatsApp</p>
-            <p class="text-emerald-600 text-sm">+62 882-0000-79898</p>
-          </div>
-        </a>
-
-        <a href="https://instagram.com/raszxy__" target="_blank"
-           class="group flex items-center justify-center gap-4 bg-emerald-100 hover:bg-emerald-200 px-10 py-5 rounded-3xl transition-all duration-300">
-          <i class="fa-brands fa-instagram text-3xl text-emerald-600 group-hover:scale-110 transition"></i>
-          <div class="text-left">
-            <p class="font-semibold text-emerald-900">Instagram</p>
-            <p class="text-emerald-600 text-sm">@raszxy__</p>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-emerald-950 text-emerald-400 py-12">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <div class="flex justify-center mb-6">
-        <i class="fa-solid fa-leaf text-4xl text-emerald-500"></i>
-      </div>
-      <p class="text-lg">© 2026 Agung Dwi Frasetyo • Dibuat dengan ❤️ untuk Bumi dan Alam</p>
+    <!-- Hamburger Button -->
+    <button 
+      @click="open = !open"
+      class="md:hidden text-2xl text-emerald-700 focus:outline-none transition">
       
-      <a href="#home" 
-         class="inline-flex items-center gap-2 mt-8 text-emerald-500 hover:text-emerald-400 transition">
-        <i class="fa-solid fa-arrow-up"></i>
-        <span>Kembali ke atas</span>
+      <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    x-show="open"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 -translate-y-5"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 -translate-y-5"
+    class="md:hidden bg-white border-t border-emerald-100 shadow-lg">
+
+    <div class="flex flex-col px-6 py-4 gap-4 text-lg">
+
+      <a href="#home" @click="open = false" class="py-2">Beranda</a>
+      <a href="#tentang" @click="open = false" class="py-2">Tentang</a>
+      <a href="#proyek" @click="open = false" class="py-2">Eksplorasi</a>
+      <a href="#kontak" @click="open = false" class="py-2">Kontak</a>
+
+      <!-- CTA -->
+      <a href="#kontak" 
+         @click="open = false"
+         class="mt-2 bg-emerald-600 text-white text-center py-3 rounded-xl font-semibold">
+         Hubungi Saya
       </a>
+
     </div>
-  </footer>
-
-</body>
-</html>               alt="Proyek 1" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Gunung Manglayang</h3>
-            <p class="text-emerald-100">Sebuah Gunung yang berada di Bandung</p>
-          </div>
-        </div>
-
-        <!-- Proyek 2 -->
-        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover">
-          <img src="images/proyek3.jpeg" 
-               alt="Proyek 2" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Pantai Karang Papak</h3>
-            <p class="text-emerald-100">Sebuah pantai yang berada di Garut Selatan</p>
-          </div>
-        </div>
-
-        <!-- Proyek 3 -->
-        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover">
-          <img src="images/proyek2.jpeg" 
-               alt="Proyek 3" class="w-full h-64 object-cover">
-          <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Puncak Mega</h3>
-            <p class="text-emerald-100">Gunung yang berada di daerah Bandung selatan</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- kontak -->
-<section id="kontak" class="py-24 bg-white">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-4xl font-bold mb-6">Hubungi Saya</h2>
-    <p class="text-emerald-700 mb-10">
-      Tertarik bekerja sama atau sekadar ngobrol? Silakan hubungi saya 👇
+  </div>
+</nav>
+<!-- HERO -->
+<section id="home" class="hero-bg min-h-screen flex items-center text-white">
+  <div class="max-w-6xl mx-auto px-6 pt-20">
+    <h2 class="text-5xl md:text-6xl font-bold mb-6">
+      Selamat Datang di Portofolio Saya
+    </h2>
+    <p class="text-xl mb-8">
+      Halo, saya Agung Dwi Frasetyo<br>
+      Siswa • Desainer • Pecinta Alam
     </p>
 
-    <div class="flex flex-col md:flex-row justify-center gap-6 text-lg">
+    <a href="#proyek"
+       class="bg-white text-emerald-800 px-6 py-3 rounded-lg font-semibold">
+       Lihat Eksplorasi
+    </a>
+  </div>
+</section>
 
-      <!-- Email -->
-      <a href="mailto:agungdwifrasetyo@gmail.com" 
-         class="flex items-center justify-center gap-2 bg-emerald-100 hover:bg-emerald-200 px-6 py-3 rounded-full transition">
-        <i class="fa-solid fa-envelope"></i> Email
-      </a>
+<!-- TENTANG -->
+<section id="tentang" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
 
-      <!-- WhatsApp -->
-      <a href="https://wa.me/62882000079898" target="_blank"
-         class="flex items-center justify-center gap-2 bg-emerald-100 hover:bg-emerald-200 px-6 py-3 rounded-full transition">
-        <i class="fa-brands fa-whatsapp"></i> WhatsApp
-      </a>
+    <img src="images/profil.jpeg" class="rounded-xl shadow-lg" alt="Profil">
 
-      <!-- Instagram -->
-      <a href="https://instagram.com/raszxy__" target="_blank"
-         class="flex items-center justify-center gap-2 bg-emerald-100 hover:bg-emerald-200 px-6 py-3 rounded-full transition">
-        <i class="fa-brands fa-instagram"></i> Instagram
-      </a>
+    <div>
+      <h2 class="text-3xl font-bold mb-4">Tentang Saya</h2>
+      <p class="text-emerald-700 mb-4">
+        Saya Agung Dwi Frasetyo, siswa SMKN 13 Bandung
+        dengan minat di bidang jaringan komputer.
+      </p>
+
+      <p><strong>Cita-cita:</strong> Teknisi Jaringan</p>
+      <p><strong>Lokasi:</strong> Bandung</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROYEK -->
+<section id="proyek" class="py-20 leaf-bg text-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+
+    <h2 class="text-4xl font-bold mb-10">Eksplorasi Saya</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <div class="card-hover bg-white/10 p-4 rounded-xl">
+        <img src="images/proyek1.jpeg" class="rounded-lg mb-4" alt="">
+        <h3 class="text-xl font-semibold">Gunung Manglayang</h3>
+      </div>
+
+      <div class="card-hover bg-white/10 p-4 rounded-xl">
+        <img src="images/proyek3.jpeg" class="rounded-lg mb-4" alt="">
+        <h3 class="text-xl font-semibold">Pantai Karang Papak</h3>
+      </div>
+
+      <div class="card-hover bg-white/10 p-4 rounded-xl">
+        <img src="images/proyek2.jpeg" class="rounded-lg mb-4" alt="">
+        <h3 class="text-xl font-semibold">Puncak Mega</h3>
+      </div>
 
     </div>
   </div>
 </section>
 
-  <!-- Footer (sama) -->
-  <footer class="bg-emerald-950 text-emerald-400 py-10 text-center">
-    <p>© 2026 Agung Dwi F • Dibuat dengan ❤️ untuk Bumi</p>
-  </footer>
+<!-- KONTAK -->
+<section id="kontak" class="py-20 bg-white text-center">
+  <h2 class="text-3xl font-bold mb-6">Hubungi Saya</h2>
+
+  <div class="flex justify-center gap-6 flex-wrap">
+
+    <a href="mailto:agungdwifrasetyo@gmail.com"
+       class="bg-emerald-100 px-6 py-3 rounded-full">
+       <i class="fa-solid fa-envelope"></i> Email
+    </a>
+
+    <a href="https://wa.me/62882000079898"
+       class="bg-emerald-100 px-6 py-3 rounded-full">
+       <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+
+    <a href="https://instagram.com/raszxy__"
+       class="bg-emerald-100 px-6 py-3 rounded-full">
+       <i class="fa-brands fa-instagram"></i> Instagram
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-emerald-900 text-white text-center py-6">
+  <p>© 2026 Agung Dwi Frasetyo</p>
+</footer>
 
 </body>
 </html>
