@@ -4,215 +4,258 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agung Dwi F | Portofolio</title>
-
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Alpine JS -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
   <style>
-    body { font-family: 'Segoe UI', system-ui, sans-serif; }
-
+    body { 
+      font-family: 'Segoe UI', system-ui, sans-serif; 
+      background-color: #0a0a0a;
+    }
     .hero-bg {
-      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg');
+      background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('images/hero.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
-
     .leaf-bg {
-      background-image: url("images/backgr.jpeg");
+      background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url("images/backgr.jpeg");
       background-size: cover;
       background-position: center;
     }
 
-    .card-hover {
-      transition: all 0.4s ease;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-
-    .nav-link {
+    /* Animasi Hover Tombol */
+    .btn-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
+      overflow: hidden;
     }
-
-    .nav-link::after {
+    
+    .btn-hover::before {
       content: '';
       position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background: #10b981;
-      transition: 0.3s;
+      top: 0;
+      left: -100%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.6s;
+    }
+    
+    .btn-hover:hover::before {
+      left: 200%;
     }
 
-    .nav-link:hover::after {
-      width: 100%;
+    .btn-hover:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.3);
+    }
+
+    .btn-contact {
+      transition: all 0.3s ease;
+    }
+    
+    .btn-contact:hover {
+      transform: translateY(-5px) scale(1.08);
+      background-color: #10b981 !important;
+      color: white !important;
+      box-shadow: 0 10px 15px -3px rgb(16 185 129 / 0.4);
     }
   </style>
 </head>
+<body class="bg-zinc-950 text-zinc-200">
 
-<body class="bg-emerald-50 text-emerald-950">
-
-<!-- NAVBAR -->
-<nav class="fixed top-0 w-full bg-white/90 backdrop-blur z-50 border-b"
-<nav 
-  x-data="{ open: false }"
-  class="fixed top-0 w-full bg-white/90 backdrop-blur-lg z-50 border-b border-emerald-100">
-
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-
-    <!-- Logo -->
-    <h1 class="text-xl font-bold text-emerald-700 flex items-center gap-2">
-      <i class="fa-solid fa-leaf"></i> Agung Dwi F
-    </h1>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex gap-8 text-lg">
-      <a href="#home" class="nav-link">Beranda</a>
-      <a href="#tentang" class="nav-link">Tentang</a>
-      <a href="#proyek" class="nav-link">Eksplorasi</a>
-      <a href="#kontak" class="nav-link">Kontak</a>
-    </div>
-
-    <!-- Hamburger Button -->
-    <button 
-      @click="open = !open"
-      class="md:hidden text-2xl text-emerald-700 focus:outline-none transition">
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-zinc-950/80 backdrop-blur-md z-50 border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-leaf text-3xl text-emerald-500"></i>
+        <h1 class="text-2xl font-bold tracking-tight text-white">Agung Dwi F</h1>
+      </div>
       
-      <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
-    </button>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div 
-    x-show="open"
-    x-transition:enter="transition ease-out duration-300"
-    x-transition:enter-start="opacity-0 -translate-y-5"
-    x-transition:enter-end="opacity-100 translate-y-0"
-    x-transition:leave="transition ease-in duration-200"
-    x-transition:leave-start="opacity-100 translate-y-0"
-    x-transition:leave-end="opacity-0 -translate-y-5"
-    class="md:hidden bg-white border-t border-emerald-100 shadow-lg">
-
-    <div class="flex flex-col px-6 py-4 gap-4 text-lg">
-
-      <a href="#home" @click="open = false" class="py-2">Beranda</a>
-      <a href="#tentang" @click="open = false" class="py-2">Tentang</a>
-      <a href="#proyek" @click="open = false" class="py-2">Eksplorasi</a>
-      <a href="#kontak" @click="open = false" class="py-2">Kontak</a>
-
-      <!-- CTA -->
-      <a href="#kontak" 
-         @click="open = false"
-         class="mt-2 bg-emerald-600 text-white text-center py-3 rounded-xl font-semibold">
-         Hubungi Saya
+      <div class="hidden md:flex gap-8 text-lg">
+        <a href="#home" class="hover:text-emerald-400 transition">Beranda</a>
+        <a href="#tentang" class="hover:text-emerald-400 transition">Tentang</a>
+        <a href="#pendidikan" class="hover:text-emerald-400 transition">Pendidikan</a>
+        <a href="#eksplor" class="hover:text-emerald-400 transition">Eksplorasi</a>
+        <a href="#kontak" class="hover:text-emerald-400 transition">Kontak</a>
+      </div>
+      
+      <a href="#kontak" class="btn-hover bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-full font-medium transition">
+        Hubungi Saya
       </a>
-
     </div>
-  </div>
-</nav>
-<!-- HERO -->
-<section id="home" class="hero-bg min-h-screen flex items-center text-white">
-  <div class="max-w-6xl mx-auto px-6 pt-20">
-    <h2 class="text-5xl md:text-6xl font-bold mb-6">
-      Selamat Datang di Portofolio Saya
-    </h2>
-    <p class="text-xl mb-8">
-      Halo, saya Agung Dwi Frasetyo<br>
-      Siswa • Desainer • Pecinta Alam
-    </p>
+  </nav>
 
-    <a href="#proyek"
-       class="bg-white text-emerald-800 px-6 py-3 rounded-lg font-semibold">
-       Lihat Eksplorasi
-    </a>
-  </div>
-</section>
-
-<!-- TENTANG -->
-<section id="tentang" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-
-    <img src="images/profil.jpeg" class="rounded-xl shadow-lg" alt="Profil">
-
-    <div>
-      <h2 class="text-3xl font-bold mb-4">Tentang Saya</h2>
-      <p class="text-emerald-700 mb-4">
-        Saya Agung Dwi Frasetyo, siswa SMKN 13 Bandung
-        dengan minat di bidang jaringan komputer.
-      </p>
-
-      <p><strong>Cita-cita:</strong> Teknisi Jaringan</p>
-      <p><strong>Lokasi:</strong> Bandung</p>
+  <!-- Hero -->
+  <section id="home" class="hero-bg min-h-screen flex items-center text-white">
+    <div class="max-w-6xl mx-auto px-6 pt-20" data-aos="fade-up">
+      <div class="max-w-2xl">
+        <h2 class="text-6xl md:text-7xl font-bold leading-tight mb-6">
+          Selamat Datang di<br>Portofolio Saya
+        </h2>
+        <p class="text-xl md:text-2xl text-zinc-300 mb-10">
+          Halo, saya Agung Dwi Frasetyo.<br>
+          Siswa SMKN 13 Bandung • Calon Teknisi Jaringan
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#pendidikan" class="btn-hover bg-white text-zinc-900 px-8 py-4 rounded-full font-semibold text-lg">
+            Riwayat Pendidikan
+          </a>
+          <a href="#eksplor" class="btn-hover border-2 border-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10">
+            Lihat Eksplorasi
+          </a>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- Tentang Saya -->
+  <section id="tentang" class="py-24 bg-zinc-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div data-aos="fade-right">
+          <img src="images/profil.jpeg" alt="Agung Dwi Frasetyo" class="rounded-3xl shadow-2xl w-full">
+        </div>
+        <div class="space-y-6" data-aos="fade-left">
+          <div>
+            <span class="inline-block px-4 py-1 bg-emerald-900 text-emerald-400 rounded-full text-sm font-medium">Tentang Saya</span>
+            <h2 class="text-5xl font-bold mt-4 leading-tight text-white">Siswa SMKN 13 Bandung</h2>
+          </div>
+          <p class="text-lg text-zinc-400 leading-relaxed">
+            Halo, nama saya Agung Dwi Frasetyo. Saya seorang siswa yang memiliki minat besar di bidang teknologi, khususnya jaringan komputer.
+          </p>
+          <p class="text-lg text-zinc-400 leading-relaxed">
+            Di waktu luang, saya suka bermain musik, mengeksplor alam, dan tidur 😄. Alam adalah tempat terbaik untuk refreshing dan mencari inspirasi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- PROYEK -->
-<section id="proyek" class="py-20 leaf-bg text-white">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-
-    <h2 class="text-4xl font-bold mb-10">Eksplorasi Saya</h2>
-
-    <div class="grid md:grid-cols-3 gap-6">
-
-      <div class="card-hover bg-white/10 p-4 rounded-xl">
-        <img src="images/proyek1.jpeg" class="rounded-lg mb-4" alt="">
-        <h3 class="text-xl font-semibold">Gunung Manglayang</h3>
+  <!-- Jenjang Pendidikan -->
+  <section id="pendidikan" class="py-24 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="inline-block px-4 py-1 bg-emerald-900 text-emerald-400 rounded-full text-sm font-medium">Riwayat</span>
+        <h2 class="text-5xl font-bold mt-4 text-white">Jenjang Pendidikan</h2>
       </div>
 
-      <div class="card-hover bg-white/10 p-4 rounded-xl">
-        <img src="images/proyek3.jpeg" class="rounded-lg mb-4" alt="">
-        <h3 class="text-xl font-semibold">Pantai Karang Papak</h3>
-      </div>
+      <div class="max-w-3xl mx-auto space-y-8">
+        <div class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0">SMK</div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-semibold text-white">SMK Negeri 13 Bandung</h3>
+            <p class="text-emerald-400">Teknik Komputer dan Jaringan (TKJ) • 2024 - Sekarang</p>
+            <p class="mt-3 text-zinc-400">Sedang mendalami ilmu jaringan, Cisco, server, dan administrasi sistem.</p>
+          </div>
+        </div>
 
-      <div class="card-hover bg-white/10 p-4 rounded-xl">
-        <img src="images/proyek2.jpeg" class="rounded-lg mb-4" alt="">
-        <h3 class="text-xl font-semibold">Puncak Mega</h3>
-      </div>
+        <!-- SMP & SD tetap sama -->
+        <div class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0">SMP</div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-semibold text-white">SMPN 56 Bandung</h3>
+            <p class="text-blue-400">2021 - 2024</p>
+            <p class="mt-3 text-zinc-400">Aktif di ekstrakurikuler komputer dan olahraga.</p>
+          </div>
+        </div>
 
+        <div class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 bg-amber-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0">SD</div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-semibold text-white">SDN 271 Panghegar</h3>
+            <p class="text-amber-400">2015 - 2021</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- KONTAK -->
-<section id="kontak" class="py-20 bg-white text-center">
-  <h2 class="text-3xl font-bold mb-6">Hubungi Saya</h2>
+  <!-- Eksplorasi -->
+  <section id="eksplor" class="py-24 leaf-bg text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <span class="text-emerald-300">Petualangan Alam</span>
+        <h2 class="text-5xl font-bold mt-3">Beberapa Tempat yang Sudah Saya Kunjungi</h2>
+      </div>
 
-  <div class="flex justify-center gap-6 flex-wrap">
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card eksplorasi tetap sama -->
+        <div class="bg-zinc-900/70 backdrop-blur-md rounded-3xl overflow-hidden card-hover border border-zinc-700" data-aos="fade-up" data-aos-delay="100">
+          <img src="images/proyek1.jpeg" alt="Gunung Manglayang" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-semibold mb-2">Gunung Manglayang</h3>
+            <p class="text-zinc-400">Bandung</p>
+          </div>
+        </div>
 
-    <a href="mailto:agungdwifrasetyo@gmail.com"
-       class="bg-emerald-100 px-6 py-3 rounded-full">
-       <i class="fa-solid fa-envelope"></i> Email
-    </a>
+        <!--pantai karang papak-->
+        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
+          <img src="images/proyek3.jpeg" alt="Pantai Karang Papak" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-semibold mb-2">Pantai Karang Papak</h3>
+            <p class="text-emerald-100">Garut Selatan</p>
+          </div>
+        </div>
 
-    <a href="https://wa.me/62882000079898"
-       class="bg-emerald-100 px-6 py-3 rounded-full">
-       <i class="fa-brands fa-whatsapp"></i> WhatsApp
-    </a>
+        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
+          <img src="images/proyek2.jpeg" alt="Puncak Mega" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-semibold mb-2">Puncak Mega</h3>
+            <p class="text-emerald-100">Bandung Selatan</p>
+          </div>
+        </div>
 
-    <a href="https://instagram.com/raszxy__"
-       class="bg-emerald-100 px-6 py-3 rounded-full">
-       <i class="fa-brands fa-instagram"></i> Instagram
-    </a>
+        <!-- Sisanya sama... -->
+      </div>
+    </div>
+  </section>
 
-  </div>
-</section>
+  <!-- Kontak -->
+  <section id="kontak" class="py-24 bg-zinc-900">
+    <div class="max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
+      <h2 class="text-4xl font-bold mb-6 text-white">Hubungi Saya</h2>
+      <p class="text-zinc-400 mb-12">Tertarik berkolaborasi atau sekedar ngobrol?</p>
 
-<!-- FOOTER -->
-<footer class="bg-emerald-900 text-white text-center py-6">
-  <p>© 2026 Agung Dwi Frasetyo</p>
-</footer>
+      <div class="flex flex-col sm:flex-row justify-center gap-6">
+        <a href="mailto:agungdwifrasetyo@gmail.com" class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg">
+          <i class="fa-solid fa-envelope"></i> Email
+        </a>
+        <a href="https://wa.me/62882000079898" target="_blank" class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://instagram.com/raszxy__" target="_blank" class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg">
+          <i class="fa-brands fa-instagram"></i> Instagram
+        </a>
+      </div>
+    </div>
+  </section>
 
+  <!-- Footer -->
+  <footer class="bg-black text-zinc-500 py-10 text-center">
+    <p>© 2026 Agung Dwi Frasetyo • Dibuat dengan ❤️ untuk Bumi</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 900,
+      offset: 80
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href') !== '#') {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
