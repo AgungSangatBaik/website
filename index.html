@@ -1,319 +1,664 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Agung Dwi F | Portofolio</title>
+
+  <meta
+    name="description"
+    content="Portofolio Agung Dwi Frasetyo - Siswa SMKN 13 Bandung jurusan TKJ yang memiliki minat di bidang jaringan komputer dan eksplorasi alam."
+  />
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  />
+
+  <link
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    rel="stylesheet"
+  />
+
   <style>
-    body { 
-      font-family: 'Segoe UI', system-ui, sans-serif; 
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
       background-color: #0a0a0a;
     }
+
     .hero-bg {
-      background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('images/hero.jpg');
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+        url("images/hero.jpg");
+
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
+
     .leaf-bg {
-      background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url("images/backgr.jpeg");
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
+        url("images/backgr.jpeg");
+
       background-size: cover;
       background-position: center;
     }
 
-    /* Animasi Hover Tombol */
+    @media (max-width: 768px) {
+      .hero-bg {
+        background-attachment: scroll;
+      }
+    }
+
+    /* Tombol Hover */
     .btn-hover {
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
     }
-    
+
     .btn-hover::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: -100%;
       width: 40%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+
       transition: 0.6s;
     }
-    
+
     .btn-hover:hover::before {
       left: 200%;
     }
 
     .btn-hover:hover {
       transform: translateY(-4px) scale(1.05);
+
       box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.3);
     }
 
+    /* Card Hover */
+    .card-hover {
+      transition: all 0.35s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+
+      box-shadow: 0 20px 30px rgba(16, 185, 129, 0.15);
+    }
+
+    /* Contact Button */
     .btn-contact {
       transition: all 0.3s ease;
     }
-    
+
     .btn-contact:hover {
       transform: translateY(-5px) scale(1.08);
+
       background-color: #10b981 !important;
       color: white !important;
+
       box-shadow: 0 10px 15px -3px rgb(16 185 129 / 0.4);
     }
   </style>
 </head>
+
 <body class="bg-zinc-950 text-zinc-200">
 
-  <!-- Navbar -->
-  <nav class="fixed top-0 w-full bg-zinc-950/80 backdrop-blur-md z-50 border-b border-zinc-800">
-    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+  <!-- NAVBAR -->
+  <nav
+    class="fixed top-0 w-full bg-zinc-950/80 backdrop-blur-md z-50 border-b border-zinc-800"
+  >
+    <div
+      class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center"
+    >
+
+      <!-- Logo -->
       <div class="flex items-center gap-3">
         <i class="fa-solid fa-leaf text-3xl text-emerald-500"></i>
-        <h1 class="text-2xl font-bold tracking-tight text-white">Agung Dwi F</h1>
+
+        <h1 class="text-2xl font-bold tracking-tight text-white">
+          Agung Dwi F
+        </h1>
       </div>
-      
-<nav class="fixed top-0 w-full bg-zinc-950/80 backdrop-blur-md z-50 border-b border-zinc-800">
-  <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
 
-    <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <i class="fa-solid fa-leaf text-3xl text-emerald-500"></i>
-      <h1 class="text-2xl font-bold tracking-tight text-white">Agung Dwi F</h1>
-    </div>
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex gap-8 text-lg">
+        <a href="#home" class="hover:text-emerald-400 transition">
+          Beranda
+        </a>
 
-    <!-- Menu Desktop -->
-    <div class="hidden md:flex gap-8 text-lg">
-      <a href="#home" class="hover:text-emerald-400 transition">Beranda</a>
-      <a href="#tentang" class="hover:text-emerald-400 transition">Tentang</a>
-      <a href="#pendidikan" class="hover:text-emerald-400 transition">Pendidikan</a>
-      <a href="#eksplor" class="hover:text-emerald-400 transition">Eksplorasi</a>
-      <a href="#kontak" class="hover:text-emerald-400 transition">Kontak</a>
-    </div>
+        <a href="#tentang" class="hover:text-emerald-400 transition">
+          Tentang
+        </a>
 
-    <!-- Tombol Desktop -->
-    <a href="#kontak"
-       class="hidden md:block btn-hover bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-full font-medium transition">
-      Hubungi Saya
-    </a>
+        <a href="#pendidikan" class="hover:text-emerald-400 transition">
+          Pendidikan
+        </a>
 
-    <!-- Hamburger Button -->
-    <button id="menu-btn"
-      class="md:hidden text-3xl text-white focus:outline-none">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
+        <a href="#eksplor" class="hover:text-emerald-400 transition">
+          Eksplorasi
+        </a>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu"
-    class="hidden md:hidden bg-zinc-900 border-t border-zinc-800">
+        <a href="#kontak" class="hover:text-emerald-400 transition">
+          Kontak
+        </a>
+      </div>
 
-    <div class="flex flex-col p-6 gap-5 text-lg">
-
-      <a href="#home" class="mobile-link hover:text-emerald-400 transition">
-        Beranda
-      </a>
-
-      <a href="#tentang" class="mobile-link hover:text-emerald-400 transition">
-        Tentang
-      </a>
-
-      <a href="#pendidikan" class="mobile-link hover:text-emerald-400 transition">
-        Pendidikan
-      </a>
-
-      <a href="#eksplor" class="mobile-link hover:text-emerald-400 transition">
-        Eksplorasi
-      </a>
-
-      <a href="#kontak" class="mobile-link hover:text-emerald-400 transition">
-        Kontak
-      </a>
-
-      <a href="#kontak"
-        class="bg-emerald-600 hover:bg-emerald-500 text-center text-white px-6 py-3 rounded-full font-medium transition">
+      <!-- Desktop Button -->
+      <a
+        href="#kontak"
+        class="hidden md:block btn-hover bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-full font-medium transition"
+      >
         Hubungi Saya
       </a>
 
+      <!-- Hamburger -->
+      <button
+        id="menu-btn"
+        class="md:hidden text-3xl text-white"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
-  </div>
-</nav>
-      
-      <a href="#kontak" class="btn-hover bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-full font-medium transition">
-        Hubungi Saya
-      </a>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden bg-zinc-900 border-t border-zinc-800"
+    >
+      <div class="flex flex-col p-6 gap-5 text-lg">
+
+        <a href="#home"
+          class="mobile-link hover:text-emerald-400 transition">
+          Beranda
+        </a>
+
+        <a href="#tentang"
+          class="mobile-link hover:text-emerald-400 transition">
+          Tentang
+        </a>
+
+        <a href="#pendidikan"
+          class="mobile-link hover:text-emerald-400 transition">
+          Pendidikan
+        </a>
+
+        <a href="#eksplor"
+          class="mobile-link hover:text-emerald-400 transition">
+          Eksplorasi
+        </a>
+
+        <a href="#kontak"
+          class="mobile-link hover:text-emerald-400 transition">
+          Kontak
+        </a>
+
+        <a
+          href="#kontak"
+          class="bg-emerald-600 hover:bg-emerald-500 text-center text-white px-6 py-3 rounded-full font-medium transition"
+        >
+          Hubungi Saya
+        </a>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section id="home" class="hero-bg min-h-screen flex items-center text-white">
-    <div class="max-w-6xl mx-auto px-6 pt-20" data-aos="fade-up">
+  <!-- HERO -->
+  <section
+    id="home"
+    class="hero-bg min-h-screen flex items-center text-white"
+  >
+    <div
+      class="max-w-6xl mx-auto px-6 pt-20"
+      data-aos="fade-up"
+    >
+
       <div class="max-w-2xl">
-        <h2 class="text-6xl md:text-7xl font-bold leading-tight mb-6">
-          Selamat Datang di<br>Portofolio Saya
+
+        <h2
+          class="text-5xl md:text-7xl font-bold leading-tight mb-6"
+        >
+          Selamat Datang di<br />
+          Portofolio Saya
         </h2>
-        <p class="text-xl md:text-2xl text-zinc-300 mb-10">
-          Halo, saya Agung Dwi Frasetyo.<br>
-          Siswa SMKN 13 Bandung • Calon Teknisi Jaringan
+
+        <p
+          class="text-xl md:text-2xl text-zinc-300 mb-10"
+        >
+          Halo, saya Agung Dwi Frasetyo.<br />
+          Siswa TKJ di SMKN 13 Bandung yang fokus pada
+          jaringan komputer, server, dan teknologi digital.
         </p>
+
         <div class="flex flex-wrap gap-4">
-          <a href="#pendidikan" class="btn-hover bg-white text-zinc-900 px-8 py-4 rounded-full font-semibold text-lg">
+
+          <a
+            href="#pendidikan"
+            class="btn-hover bg-white text-zinc-900 px-8 py-4 rounded-full font-semibold text-lg"
+          >
             Riwayat Pendidikan
           </a>
-          <a href="#eksplor" class="btn-hover border-2 border-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10">
+
+          <a
+            href="#eksplor"
+            class="btn-hover border-2 border-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10"
+          >
             Lihat Eksplorasi
           </a>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Tentang Saya -->
+  <!-- TENTANG -->
   <section id="tentang" class="py-24 bg-zinc-900">
     <div class="max-w-6xl mx-auto px-6">
+
       <div class="grid md:grid-cols-2 gap-16 items-center">
+
         <div data-aos="fade-right">
-          <img src="images/profil.jpeg" alt="Agung Dwi Frasetyo" class="rounded-3xl shadow-2xl w-full">
+          <img
+            src="images/profil.jpeg"
+            loading="lazy"
+            alt="Agung Dwi Frasetyo"
+            class="rounded-3xl shadow-2xl w-full"
+          />
         </div>
-        <div class="space-y-6" data-aos="fade-left">
+
+        <div
+          class="space-y-6"
+          data-aos="fade-left"
+        >
+
           <div>
-            <span class="inline-block px-4 py-1 bg-emerald-900 text-emerald-400 rounded-full text-sm font-medium">Tentang Saya</span>
-            <h2 class="text-5xl font-bold mt-4 leading-tight text-white">Siswa SMKN 13 Bandung</h2>
+            <span
+              class="inline-block px-4 py-1 bg-emerald-900 text-emerald-400 rounded-full text-sm font-medium"
+            >
+              Tentang Saya
+            </span>
+
+            <h2
+              class="text-5xl font-bold mt-4 leading-tight text-white"
+            >
+              Siswa SMKN 13 Bandung
+            </h2>
           </div>
-          <p class="text-lg text-zinc-400 leading-relaxed">
-            Halo, nama saya Agung Dwi Frasetyo. Saya seorang siswa yang memiliki minat besar di bidang teknologi, khususnya jaringan komputer.
+
+          <p
+            class="text-lg text-zinc-400 leading-relaxed"
+          >
+            Halo, nama saya Agung Dwi Frasetyo.
+            Saya seorang siswa yang memiliki minat besar
+            di bidang teknologi, khususnya jaringan komputer.
           </p>
-          <p class="text-lg text-zinc-400 leading-relaxed">
-            Di waktu luang, saya suka bermain musik, mengeksplor alam, dan tidur 😄. Alam adalah tempat terbaik untuk refreshing dan mencari inspirasi.
+
+          <p
+            class="text-lg text-zinc-400 leading-relaxed"
+          >
+            Di waktu luang, saya suka bermain musik,
+            mengeksplor alam, dan tidur 😄.
+            Alam adalah tempat terbaik untuk refreshing
+            dan mencari inspirasi.
           </p>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Jenjang Pendidikan -->
+  <!-- PENDIDIKAN -->
   <section id="pendidikan" class="py-24 bg-zinc-950">
+
     <div class="max-w-6xl mx-auto px-6">
+
       <div class="text-center mb-16" data-aos="fade-up">
-        <span class="inline-block px-4 py-1 bg-emerald-900 text-emerald-400 rounded-full text-sm font-medium">Riwayat</span>
-        <h2 class="text-5xl font-bold mt-4 text-white">Jenjang Pendidikan</h2>
+
+        <span
+          class="inline-block px-4 py-1 bg-emerald-900 text-emerald-400 rounded-full text-sm font-medium"
+        >
+          Riwayat
+        </span>
+
+        <h2 class="text-5xl font-bold mt-4 text-white">
+          Jenjang Pendidikan
+        </h2>
+
       </div>
 
       <div class="max-w-3xl mx-auto space-y-8">
-        <div class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0">SMK</div>
+
+        <!-- SMK -->
+        <div
+          class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+
+          <div
+            class="w-16 h-16 bg-emerald-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0"
+          >
+            SMK
+          </div>
+
           <div class="flex-1">
-            <h3 class="text-2xl font-semibold text-white">SMK Negeri 13 Bandung</h3>
-            <p class="text-emerald-400">Teknik Komputer dan Jaringan (TKJ) • 2024 - Sekarang</p>
-            <p class="mt-3 text-zinc-400">Sedang mendalami ilmu jaringan, Cisco, server, dan administrasi sistem.</p>
+            <h3 class="text-2xl font-semibold text-white">
+              SMK Negeri 13 Bandung
+            </h3>
+
+            <p class="text-emerald-400">
+              Teknik Komputer dan Jaringan (TKJ) •
+              2024 - Sekarang
+            </p>
+
+            <p class="mt-3 text-zinc-400">
+              Sedang mendalami ilmu jaringan,
+              Cisco, server, dan administrasi sistem.
+            </p>
           </div>
         </div>
 
-        <!-- SMP & SD tetap sama -->
-        <div class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0">SMP</div>
+        <!-- SMP -->
+        <div
+          class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+
+          <div
+            class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0"
+          >
+            SMP
+          </div>
+
           <div class="flex-1">
-            <h3 class="text-2xl font-semibold text-white">SMPN 56 Bandung</h3>
-            <p class="text-blue-400">2021 - 2024</p>
-            <p class="mt-3 text-zinc-400">Aktif di ekstrakurikuler komputer dan olahraga.</p>
+            <h3 class="text-2xl font-semibold text-white">
+              SMPN 56 Bandung
+            </h3>
+
+            <p class="text-blue-400">
+              2021 - 2024
+            </p>
+
+            <p class="mt-3 text-zinc-400">
+              Aktif di ekstrakurikuler komputer
+              dan olahraga.
+            </p>
           </div>
         </div>
 
-        <div class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-16 h-16 bg-amber-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0">SD</div>
+        <!-- SD -->
+        <div
+          class="bg-zinc-900 p-8 rounded-3xl card-hover flex gap-6 border border-zinc-800"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+
+          <div
+            class="w-16 h-16 bg-amber-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold flex-shrink-0"
+          >
+            SD
+          </div>
+
           <div class="flex-1">
-            <h3 class="text-2xl font-semibold text-white">SDN 271 Panghegar</h3>
-            <p class="text-amber-400">2015 - 2021</p>
+            <h3 class="text-2xl font-semibold text-white">
+              SDN 271 Panghegar
+            </h3>
+
+            <p class="text-amber-400">
+              2015 - 2021
+            </p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Eksplorasi -->
-  <section id="eksplor" class="py-24 leaf-bg text-white">
+  <!-- EKSPLORASI -->
+  <section
+    id="eksplor"
+    class="py-24 leaf-bg text-white"
+  >
+
     <div class="max-w-6xl mx-auto px-6">
+
       <div class="text-center mb-16" data-aos="fade-up">
-        <span class="text-emerald-300">Petualangan Alam</span>
-        <h2 class="text-5xl font-bold mt-3">Beberapa Tempat yang Sudah Saya Kunjungi</h2>
+
+        <span class="text-emerald-300">
+          Petualangan Alam
+        </span>
+
+        <h2 class="text-5xl font-bold mt-3">
+          Beberapa Tempat yang Sudah Saya Kunjungi
+        </h2>
+
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Card eksplorasi tetap sama -->
-        <div class="bg-zinc-900/70 backdrop-blur-md rounded-3xl overflow-hidden card-hover border border-zinc-700" data-aos="fade-up" data-aos-delay="100">
-          <img src="images/proyek1.jpeg" alt="Gunung Manglayang" class="w-full h-64 object-cover">
+
+        <!-- CARD 1 -->
+        <div
+          class="bg-zinc-900/70 backdrop-blur-md rounded-3xl overflow-hidden card-hover border border-zinc-700"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+
+          <img
+            src="images/proyek1.jpeg"
+            loading="lazy"
+            alt="Gunung Manglayang"
+            class="w-full h-64 object-cover"
+          />
+
           <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Gunung Manglayang</h3>
-            <p class="text-zinc-400">Bandung</p>
+            <h3 class="text-2xl font-semibold mb-2">
+              Gunung Manglayang
+            </h3>
+
+            <p class="text-zinc-400">
+              Bandung
+            </p>
           </div>
         </div>
 
-        <!--pantai karang papak-->
-        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
-          <img src="images/proyek3.jpeg" alt="Pantai Karang Papak" class="w-full h-64 object-cover">
+        <!-- CARD 2 -->
+        <div
+          class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+
+          <img
+            src="images/proyek3.jpeg"
+            loading="lazy"
+            alt="Pantai Karang Papak"
+            class="w-full h-64 object-cover"
+          />
+
           <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Pantai Karang Papak</h3>
-            <p class="text-emerald-100">Garut Selatan</p>
+            <h3 class="text-2xl font-semibold mb-2">
+              Pantai Karang Papak
+            </h3>
+
+            <p class="text-emerald-100">
+              Garut Selatan
+            </p>
           </div>
         </div>
 
-        <div class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
-          <img src="images/proyek2.jpeg" alt="Puncak Mega" class="w-full h-64 object-cover">
+        <!-- CARD 3 -->
+        <div
+          class="bg-white/10 backdrop-blur-md rounded-3xl overflow-hidden card-hover"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+
+          <img
+            src="images/proyek2.jpeg"
+            loading="lazy"
+            alt="Puncak Mega"
+            class="w-full h-64 object-cover"
+          />
+
           <div class="p-8">
-            <h3 class="text-2xl font-semibold mb-2">Puncak Mega</h3>
-            <p class="text-emerald-100">Bandung Selatan</p>
+            <h3 class="text-2xl font-semibold mb-2">
+              Puncak Mega
+            </h3>
+
+            <p class="text-emerald-100">
+              Bandung Selatan
+            </p>
           </div>
         </div>
 
-        <!-- Sisanya sama... -->
       </div>
     </div>
   </section>
 
-  <!-- Kontak -->
+  <!-- KONTAK -->
   <section id="kontak" class="py-24 bg-zinc-900">
-    <div class="max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
-      <h2 class="text-4xl font-bold mb-6 text-white">Hubungi Saya</h2>
-      <p class="text-zinc-400 mb-12">Tertarik berkolaborasi atau sekedar ngobrol?</p>
 
-      <div class="flex flex-col sm:flex-row justify-center gap-6">
-        <a href="mailto:agungdwifrasetyo@gmail.com" class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg">
-          <i class="fa-solid fa-envelope"></i> Email
+    <div
+      class="max-w-4xl mx-auto px-6 text-center"
+      data-aos="fade-up"
+    >
+
+      <h2 class="text-4xl font-bold mb-6 text-white">
+        Hubungi Saya
+      </h2>
+
+      <p class="text-zinc-400 mb-12">
+        Tertarik berkolaborasi atau sekedar ngobrol?
+      </p>
+
+      <div
+        class="flex flex-col sm:flex-row justify-center gap-6"
+      >
+
+        <a
+          aria-label="Email"
+          href="mailto:agungdwifrasetyo@gmail.com"
+          class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg"
+        >
+          <i class="fa-solid fa-envelope"></i>
+          Email
         </a>
-        <a href="https://wa.me/62882000079898" target="_blank" class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+
+        <a
+          aria-label="WhatsApp"
+          href="https://wa.me/62882000079898"
+          target="_blank"
+          class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg"
+        >
+          <i class="fa-brands fa-whatsapp"></i>
+          WhatsApp
         </a>
-        <a href="https://instagram.com/raszxy__" target="_blank" class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg">
-          <i class="fa-brands fa-instagram"></i> Instagram
+
+        <a
+          aria-label="Instagram"
+          href="https://instagram.com/raszxy__"
+          target="_blank"
+          class="btn-contact flex items-center justify-center gap-3 bg-zinc-800 hover:bg-emerald-600 px-8 py-4 rounded-full transition text-lg"
+        >
+          <i class="fa-brands fa-instagram"></i>
+          Instagram
         </a>
+
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-black text-zinc-500 py-10 text-center">
-    <p>© 2026 Agung Dwi Frasetyo • Dibuat dengan ❤️ untuk Bumi</p>
+  <!-- FOOTER -->
+  <footer
+    class="bg-black text-zinc-500 py-10 text-center"
+  >
+    <p id="copyright"></p>
   </footer>
 
+  <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <script>
+    // AOS
     AOS.init({
       once: true,
       duration: 900,
       offset: 80
     });
 
+    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        if (this.getAttribute('href') !== '#') {
+      anchor.addEventListener("click", function(e) {
+
+        if (this.getAttribute("href") !== "#") {
           e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
+
+          document
+            .querySelector(this.getAttribute("href"))
+            .scrollIntoView({
+              behavior: "smooth"
+            });
         }
       });
     });
+
+    // Hamburger Menu
+    const menuBtn = document.getElementById("menu-btn");
+
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    menuBtn.addEventListener("click", () => {
+
+      mobileMenu.classList.toggle("hidden");
+
+      const icon = menuBtn.querySelector("i");
+
+      if (mobileMenu.classList.contains("hidden")) {
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+
+      } else {
+
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+      }
+    });
+
+    // Tutup Menu Setelah Klik
+    mobileLinks.forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        mobileMenu.classList.add("hidden");
+
+        const icon = menuBtn.querySelector("i");
+
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+      });
+    });
+
+    // Footer Tahun Otomatis
+    document.getElementById("copyright").innerHTML =
+      `© ${new Date().getFullYear()} Agung Dwi Frasetyo • Dibuat dengan ❤️ untuk Bumi`;
   </script>
+
 </body>
 </html>
